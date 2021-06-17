@@ -27,7 +27,7 @@ public class Exam0210 {
     } else {
       System.out.println("올바른 번호를 입력하세요!");
     }
-    
+
     keyScan.close();
   }
 }
