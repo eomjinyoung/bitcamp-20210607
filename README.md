@@ -180,5 +180,11 @@
 ## 20일차(2021-06-18,금)
 - 이론
     - 메서드 사용법
+      - 메서드를 정의하고 호출하는 방법
+      - 리팩토링 개념 및 extract method 기법 소개
+      - 실행 흐름(thread)과 다중 실행 흐름(multi-thread)의 개념
+      - call by value와 JVM 스택과 로컬 변수
+      - call by reference와 Heap 
 - 실습
+    - github.com 에 개인 홈페이지 만들기
     
