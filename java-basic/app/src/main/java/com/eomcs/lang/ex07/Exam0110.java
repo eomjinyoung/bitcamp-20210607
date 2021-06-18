@@ -30,8 +30,8 @@ public class Exam0110 {
       // 출력 줄 바꾸기
       System.out.println();
       starLen += 2;
-
-      keyScan.close();
     }
+
+    keyScan.close();
   }
 }
