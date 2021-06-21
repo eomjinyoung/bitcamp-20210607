@@ -187,4 +187,15 @@
       - call by reference와 Heap 
 - 실습
     - github.com 에 개인 홈페이지 만들기
-    
+  
+## 21일차(2021-06-21,월)
+- 이론
+    - 메서드 사용법
+      - JVM Stack 메모리와 로컬 변수의 관계
+      - Method Area, JVM Stack, Heap 메모리의 용도 비교
+      - main() 메서드에서 프로그램 아규먼트 다루기
+      - JVM 아규먼트를 다루는 방법
+      - Properties 객체 사용법
+    - 자바 표준 출력 다루기: print(), println(), printf() 
+    - 자바 키보드 입력 다루기: Scanner 클래스와 메서드 사용법
+- 실습
