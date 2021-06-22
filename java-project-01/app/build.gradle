@@ -1,0 +1,26 @@
+plugins {
+    id 'java' // 자바 관련 작업을 수행할 때 사용할 도구 추가
+    id 'eclipse' // 이클립스 관련 작업을 수행할 때 사용할 도구 추가
+}
+ 
+// 자바 소스를 컴파일 할 때 적용할 옵션
+tasks.withType(JavaCompile) {
+    // $javac -encoding UTF-8 ...
+    options.encoding = 'UTF-8';
+}
+
+// eclipse 프로젝트 이름을 설정하기
+eclipse {
+    project {
+        name = "java-project-01"
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13.1'
+    implementation 'com.google.guava:guava:30.0-jre'
+}
