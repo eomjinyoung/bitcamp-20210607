@@ -21,7 +21,7 @@ import java.util.Scanner;
 //16. 클래스를 이용하여 새 데이터타입을 정의하기
 public class App {
 
-  // 한 개의 게시글을 담을 변수를 설계
+  // 한 개의 게시글을 담을 복합 데이터의 변수를 설계
   static class Board {
     String title;
     String content;
