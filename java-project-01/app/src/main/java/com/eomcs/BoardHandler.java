@@ -6,18 +6,17 @@ import com.eomcs.App.Board;
 
 public class BoardHandler {
 
-  static final int BOARD_LENGTH = 100;
-  static Board[] boards = new Board[BOARD_LENGTH];
-  static int size = 0;
   static Scanner keyScan;
 
   static void list() {
     System.out.println("[게시글 목록]");
 
-    for (int i = 0; i < size; i++) {
-      Board board = boards[i];
+    Object[] arr = ArrayList.toArray();
+    int i = 0;
+    for (Object item : arr) {
+      Board board = (Board) item;
       System.out.printf("%d, %s, %s, %d\n", 
-          i, 
+          i++, 
           board.title, 
           String.format("%1$tY-%1$tm-%1$td", board.createdDate),
           board.viewCount);
@@ -27,7 +26,7 @@ public class BoardHandler {
   static void add() {
     System.out.println("[게시글 등록]");
 
-    if (size == BOARD_LENGTH) {
+    if (ArrayList.size == ArrayList.MAX_LENGTH) {
       System.out.println("더이상 게시글을 추가할 수 없습니다.");
       return;
     }
@@ -46,8 +45,7 @@ public class BoardHandler {
 
     board.createdDate = new Date(); // 현재의 날짜와 시간을 생성하여 배열에 저장한다.
 
-    // 배열에 게시글 정보가 담긴 객체(식판)을 넣는다.
-    boards[size++] = board;
+    ArrayList.append(board);
 
     System.out.println("게시글을 등록했습니다.");
   }
@@ -58,12 +56,12 @@ public class BoardHandler {
     System.out.print("번호? ");
     int index = Integer.parseInt(keyScan.nextLine());
 
-    if (index < 0 || index >= size) {
+    if (index < 0 || index >= ArrayList.size) {
       System.out.println("무효한 게시글 번호입니다.");
       return;
     }
 
-    Board board = boards[index];
+    Board board = (Board) ArrayList.retrieve(index);
 
     System.out.printf("제목(%s)? ", board.title);
     String title = keyScan.nextLine();
@@ -89,7 +87,7 @@ public class BoardHandler {
     System.out.print("번호? ");
     int index = Integer.parseInt(keyScan.nextLine());
 
-    if (index < 0 || index >= size) {
+    if (index < 0 || index >= ArrayList.size) {
       System.out.println("무효한 게시글 번호입니다.");
       return;
     }
@@ -100,11 +98,7 @@ public class BoardHandler {
       return;
     } 
 
-    for (int i = index; i < size - 1; i++) {
-      boards[i] = boards[i + 1];
-    }
-
-    size--;
+    ArrayList.remove(index);
 
     System.out.println("게시글을 삭제하였습니다.");
   }
@@ -115,12 +109,12 @@ public class BoardHandler {
     System.out.print("번호? ");
     int index = Integer.parseInt(keyScan.nextLine());
 
-    if (index < 0 || index >= size) {
+    if (index < 0 || index >= ArrayList.size) {
       System.out.println("무효한 게시글 번호입니다.");
       return;
     }
 
-    Board board = boards[index];
+    Board board = (Board) ArrayList.retrieve(index);
 
     board.viewCount++;
 
