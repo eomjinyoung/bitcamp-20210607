@@ -22,8 +22,6 @@ import java.util.Scanner;
 //17. 클래스를 이용하여 메서드를 분류하기 
 //18. 데이터 목록을 다루는 코드를 재사용하기 쉽게 별도의 클래스로 분리한다.
 //19. 메뉴 선택 기능을 추가
-//20. 리팩토링: 메서드 추출 => 게시글 관리 메뉴 처리 코드를 별도의 메서드를 분리한다.
-//21. 리팩토링: 메서드 이동 => 게시글을 다루는 일은 BoardHandler에게 맡긴다.
 public class App {
 
   // 한 개의 게시글을 담을 복합 데이터의 변수를 설계
@@ -51,7 +49,23 @@ public class App {
 
       switch (menuNo) {
         case "1":
-          BoardHandler.execute();
+          loop: while (true) {
+            System.out.print("게시글 관리> ");
+            String command = keyScan.nextLine();
+
+            switch (command) {
+              case "list": BoardHandler.list(); break;
+              case "add": BoardHandler.add(); break;
+              case "update": BoardHandler.update(); break;
+              case "delete": BoardHandler.delete(); break;
+              case "view": BoardHandler.view(); break;
+              case "back":
+                break loop;
+              default:
+                System.out.println("지원하지 않는 명령입니다.");
+            }
+            System.out.println();
+          }
           break;
         case "2":
           break;
@@ -60,10 +74,19 @@ public class App {
         default:
           System.out.println("메뉴 번호가 옳지 않습니다.");
       }
+
       System.out.println();
     }
 
+
+
     keyScan.close();
+
     System.out.println("안녕히 가세요!");
   }
+
+
+
+
+
 }
