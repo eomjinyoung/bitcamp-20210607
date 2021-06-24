@@ -35,12 +35,14 @@ public class App {
     // App 클래스에서 만든 Scanner 인스턴스를 BoardHandler와 MemberHandler가 같이 쓴다.
     BoardHandler.keyScan = keyScan;
     MemberHandler.keyScan = keyScan;
+    ComputeHandler.keyScan = keyScan;
 
     menuLoop: while (true) {
       System.out.println("[메뉴]");
       System.out.println("  1: 게시글 관리");
       System.out.println("  2: 회원 관리");
-      System.out.print("메뉴를 선택하시오. (종료: quit) [1..2] ");
+      System.out.println("  3: 계산기");
+      System.out.print("메뉴를 선택하시오. (종료: quit) [1..3] ");
       String menuNo = keyScan.nextLine();
 
       switch (menuNo) {
@@ -49,6 +51,9 @@ public class App {
           break;
         case "2":
           MemberHandler.service();
+          break;
+        case "3":
+          ComputeHandler.ohora();
           break;
         case "quit":
           break menuLoop;
