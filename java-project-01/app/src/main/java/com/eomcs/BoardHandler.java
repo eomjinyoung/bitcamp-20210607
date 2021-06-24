@@ -22,11 +22,11 @@ public class BoardHandler implements Handler {
       String command = keyScan.nextLine();
 
       switch (command) {
-        case "list": BoardHandler.list(); break;
-        case "add": BoardHandler.add(); break;
-        case "update": BoardHandler.update(); break;
-        case "delete": BoardHandler.delete(); break;
-        case "view": BoardHandler.view(); break;
+        case "list": list(); break;
+        case "add": add(); break;
+        case "update": update(); break;
+        case "delete": delete(); break;
+        case "view": view(); break;
         case "back":
           break loop;
         default:
