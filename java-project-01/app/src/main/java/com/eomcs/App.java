@@ -25,14 +25,16 @@ import java.util.Scanner;
 //21. 리팩토링: 
 //      - 메서드 이동 => 게시글을 다루는 일은 BoardHandler에게 맡긴다.
 //      - 클래스 이동 => Board 클래스를 사용하는 BoardHandler로 옮긴다.
+//22. 회원 관리 기능을 추가하기
 public class App {
 
   static Scanner keyScan = new Scanner(System.in);
 
   public static void main(String[] args) {
 
-    // App 클래스에서 만든 Scanner 인스턴스를 BoardHandler 와 같이 쓴다.
+    // App 클래스에서 만든 Scanner 인스턴스를 BoardHandler와 MemberHandler가 같이 쓴다.
     BoardHandler.keyScan = keyScan;
+    MemberHandler.keyScan = keyScan;
 
     menuLoop: while (true) {
       System.out.println("[메뉴]");
@@ -46,6 +48,7 @@ public class App {
           BoardHandler.execute();
           break;
         case "2":
+          MemberHandler.service();
           break;
         case "quit":
           break menuLoop;
