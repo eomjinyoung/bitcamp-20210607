@@ -2,10 +2,10 @@ package com.eomcs;
 
 import java.util.Scanner;
 
-public class ComputeHandler implements Handler {
+public class ComputeHandler {
   static Scanner keyScan;
 
-  public void execute() {
+  static void ohora() {
     while (true) {
       System.out.print("계산식: (이전 메뉴: back) (예: 100 * 4) ");
       String expression = keyScan.nextLine();

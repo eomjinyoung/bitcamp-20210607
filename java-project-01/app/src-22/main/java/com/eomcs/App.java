@@ -28,9 +28,6 @@ import java.util.Scanner;
 //22. 메뉴 추가하기
 //      - 회원 관리 기능을 추가하기(미완성)
 //      - 계산기 기능을 추가하기(완성)
-//23. 메뉴를 실행하는 핸들러의 사용 규칙을 통일하기 : 인터페이스 문법의 용도 
-//      - 규칙 정의 : Handler
-//      - 규칙을 이행(implement) : BoardHandler, MemberHandler, ComputeHandler
 public class App {
 
   static Scanner keyScan = new Scanner(System.in);
@@ -41,13 +38,6 @@ public class App {
     BoardHandler.keyScan = keyScan;
     MemberHandler.keyScan = keyScan;
     ComputeHandler.keyScan = keyScan;
-
-    // 규칙에 따라 만든 클래스에 대해 
-    // 규칙에서 정의한 메서드를 호출하려면 
-    // 먼저 그 클래스의 인스턴스를 생성한 후 
-    // 그 인스턴스를 이용하여 메서드를 호출해야 한다.
-    BoardHandler boardHandler = new BoardHandler();
-    MemberHandler memberHandler = new Mem 점심 식사 후에... 계속 ;
 
     menuLoop: while (true) {
       System.out.println("[메뉴]");
@@ -62,10 +52,10 @@ public class App {
           BoardHandler.execute();
           break;
         case "2":
-          MemberHandler.execute();
+          MemberHandler.service();
           break;
         case "3":
-          ComputeHandler.execute();
+          ComputeHandler.ohora();
           break;
         case "quit":
           break menuLoop;

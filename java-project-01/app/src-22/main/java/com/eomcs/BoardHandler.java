@@ -3,7 +3,7 @@ package com.eomcs;
 import java.util.Date;
 import java.util.Scanner;
 
-public class BoardHandler implements Handler {
+public class BoardHandler {
 
   // 한 개의 게시글을 담을 복합 데이터의 변수를 설계
   static class Board {
@@ -16,7 +16,7 @@ public class BoardHandler implements Handler {
 
   static Scanner keyScan;
 
-  public void execute() {
+  static void execute() {
     loop: while (true) {
       System.out.print("게시글 관리> ");
       String command = keyScan.nextLine();
