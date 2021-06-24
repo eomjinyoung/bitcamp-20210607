@@ -34,6 +34,9 @@ import java.util.Scanner;
 //24. 회원 관리 기능 완성하기
 //      - 회원 정보를 담을 데이터 타입을 새로 설계한다. => Member
 //      - 회원 등록, 목록 조회, 상세 조회, 변경, 삭제 기능을 구현한다.
+//      - 게시글과 회원 데이터를 함께 보관할 때 문제점 확인하기
+//25. 회원 데이터를 별도의 목록으로 관리하기(단순한 방법 = 유지보수가 어렵다)
+//      - 기존의 ArrayList 클래스를 복사하여 ArrayList2 로 만들어 사용한다.
 public class App {
 
   static Scanner keyScan = new Scanner(System.in);
