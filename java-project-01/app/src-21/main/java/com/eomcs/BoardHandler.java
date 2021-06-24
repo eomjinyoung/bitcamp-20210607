@@ -2,9 +2,17 @@ package com.eomcs;
 
 import java.util.Date;
 import java.util.Scanner;
-import com.eomcs.App.Board;
 
 public class BoardHandler {
+
+  // 한 개의 게시글을 담을 복합 데이터의 변수를 설계
+  static class Board {
+    String title;
+    String content;
+    String password;
+    int viewCount;
+    Date createdDate;
+  }
 
   static Scanner keyScan;
 

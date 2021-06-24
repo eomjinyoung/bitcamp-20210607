@@ -1,6 +1,5 @@
 package com.eomcs;
 
-import java.util.Date;
 import java.util.Scanner;
 
 //01. main(): 프로그램 entry point
@@ -23,17 +22,10 @@ import java.util.Scanner;
 //18. 데이터 목록을 다루는 코드를 재사용하기 쉽게 별도의 클래스로 분리한다.
 //19. 메뉴 선택 기능을 추가
 //20. 리팩토링: 메서드 추출 => 게시글 관리 메뉴 처리 코드를 별도의 메서드를 분리한다.
-//21. 리팩토링: 메서드 이동 => 게시글을 다루는 일은 BoardHandler에게 맡긴다.
+//21. 리팩토링: 
+//      - 메서드 이동 => 게시글을 다루는 일은 BoardHandler에게 맡긴다.
+//      - 클래스 이동 => Board 클래스를 사용하는 BoardHandler로 옮긴다.
 public class App {
-
-  // 한 개의 게시글을 담을 복합 데이터의 변수를 설계
-  static class Board {
-    String title;
-    String content;
-    String password;
-    int viewCount;
-    Date createdDate;
-  }
 
   static Scanner keyScan = new Scanner(System.in);
 
