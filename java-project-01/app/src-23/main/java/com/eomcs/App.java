@@ -31,9 +31,6 @@ import java.util.Scanner;
 //23. 메뉴를 실행하는 핸들러의 사용 규칙을 통일하기 : 인터페이스 문법의 용도 
 //      - 규칙 정의 : Handler
 //      - 규칙을 이행(implement) : BoardHandler, MemberHandler, ComputeHandler
-//24. 회원 관리 기능 완성하기
-//      - 회원 정보를 담을 데이터 타입을 새로 설계한다. => Member
-//      - 회원 등록, 목록 조회, 상세 조회, 변경, 삭제 기능을 구현한다.
 public class App {
 
   static Scanner keyScan = new Scanner(System.in);
