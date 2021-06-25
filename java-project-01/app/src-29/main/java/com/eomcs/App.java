@@ -52,29 +52,30 @@ import java.util.Scanner;
 //      - 또한 메서드도 인스턴스 메서드로 전환한다.
 //      - BoardHandler2를 삭제한다.
 //      - 게시판을 구분할 때 사용할 게시판 이름을 담는 인스턴스 변수를 추가한다.
-//30. 향후 다양한 그룹의 회원을 관리할 수 있도록 MemberHandler의 변수도 인스턴스 변수로 전환하기
-//      - MemberHandler의 스태틱 변수를 인스턴스 변수로 바꾼다.
-//      - 메서드도 인스턴스 메서드로 전환한다.
-//      - 실무에서는 가능한 향후 확장성을 고려해서 인스턴스 변수로 주로 선언한다.
-//        그러다보니 메서드도 인스턴스 메서드를 정의하게 된다.
-//      - ComputeHandler도 인스턴스 변수로 변경하라.
-//31. 인스턴스를 만들 때 반드시 값을 설정하도록 강제하기
-//      - 생성자 문법을 적용한다.
-//      - 생성자를 인스턴스를 생성할 때 반드시 호출해야 하는 메서드이다.
 public class App {
 
   static Scanner keyScan = new Scanner(System.in);
 
   public static void main(String[] args) {
 
+    // App 클래스에서 만든 Scanner 인스턴스를 BoardHandler와 MemberHandler가 같이 쓴다.
+    MemberHandler.keyScan = keyScan;
+    ComputeHandler.keyScan = keyScan;
+
     // 규칙에 따라 만든 클래스에 대해 
     // 규칙에서 정의한 메서드를 호출하려면 
     // 먼저 그 클래스의 인스턴스를 생성한 후 
     // 그 인스턴스를 이용하여 메서드를 호출해야 한다.
-    BoardHandler boardHandler = new BoardHandler("게시판1", keyScan);
-    BoardHandler boardHandler2 = new BoardHandler("게시판2", keyScan);
-    MemberHandler memberHandler = new MemberHandler(keyScan);
-    ComputeHandler computeHandler = new ComputeHandler(keyScan);
+    BoardHandler boardHandler = new BoardHandler();
+    boardHandler.keyScan = keyScan;
+    boardHandler.boardName = "게시판1";
+
+    BoardHandler boardHandler2 = new BoardHandler();
+    boardHandler2.keyScan = keyScan;
+    boardHandler2.boardName = "게시판2";
+
+    MemberHandler memberHandler = new MemberHandler();
+    ComputeHandler computeHandler = new ComputeHandler();
 
     menuLoop: while (true) {
       System.out.println("[메뉴]");

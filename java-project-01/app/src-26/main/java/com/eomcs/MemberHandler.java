@@ -19,25 +19,13 @@ public class MemberHandler implements Handler {
     Date registeredDate;
   }
 
-  String memberGroupName;
-  Scanner keyScan;
-  ArrayList memberList = new ArrayList();
+  static Scanner keyScan;
 
-  MemberHandler(Scanner keyScan) {
-    this.keyScan = keyScan;
-    this.memberGroupName = "일반";
-  }
-
-  MemberHandler(String memberGroupName, Scanner keyScan) {
-    this.memberGroupName = memberGroupName;
-    this.keyScan = keyScan;
-  }
+  static ArrayList memberList = new ArrayList();
 
   public void execute() {
     loop: while (true) {
-      // 인스턴스 메서드에서 인스턴스 변수를 사용할 때 
-      // this를 생략할 수 있다.
-      System.out.print(/*this.*/memberGroupName + "/회원 관리> ");
+      System.out.print("회원 관리> ");
       String command = keyScan.nextLine();
 
       switch (command) {
@@ -55,7 +43,7 @@ public class MemberHandler implements Handler {
     }
   }
 
-  void add() {
+  static void add() {
     System.out.println("[회원 등록]");
 
     if (memberList.size == ArrayList.MAX_LENGTH) {
@@ -85,15 +73,15 @@ public class MemberHandler implements Handler {
 
     member.registeredDate = new Date(); // 현재의 날짜와 시간을 생성하여 배열에 저장한다.
 
-    memberList.append(member);
+    ArrayList.append(memberList, member);
 
     System.out.println("회원을 등록했습니다.");
   }
 
-  void list() {
+  static void list() {
     System.out.println("[회원 목록]");
 
-    Object[] arr = memberList.toArray();
+    Object[] arr = ArrayList.toArray(memberList);
 
     for (int i = 0; i < arr.length; i++) {
       Member member = (Member) arr[i];
@@ -105,7 +93,7 @@ public class MemberHandler implements Handler {
     }
   }
 
-  void view() {
+  static void view() {
     System.out.println("[회원 조회]");
 
     System.out.print("번호? ");
@@ -116,7 +104,7 @@ public class MemberHandler implements Handler {
       return;
     }
 
-    Member member = (Member) memberList.retrieve(index);
+    Member member = (Member) ArrayList.retrieve(memberList, index);
 
     System.out.printf("이름: %s\n", member.name);
     System.out.printf("이메일: %s\n", member.email);
@@ -124,7 +112,7 @@ public class MemberHandler implements Handler {
     System.out.printf("재직중: %s\n", member.working ? "예" : "아니오");
   }
 
-  void update() {
+  static void update() {
     System.out.println("[회원 변경]");
 
     System.out.print("번호? ");
@@ -135,7 +123,7 @@ public class MemberHandler implements Handler {
       return;
     }
 
-    Member member = (Member) memberList.retrieve(index);
+    Member member = (Member) ArrayList.retrieve(memberList, index);
 
     System.out.printf("이름(%s)? ", member.name);
     String name = keyScan.nextLine();
@@ -167,7 +155,7 @@ public class MemberHandler implements Handler {
     System.out.println("회원을 변경하였습니다.");
   }
 
-  void delete() {
+  static void delete() {
     System.out.println("[회원 삭제]");
 
     System.out.print("번호? ");
@@ -184,7 +172,7 @@ public class MemberHandler implements Handler {
       return;
     } 
 
-    memberList.remove(index);
+    ArrayList.remove(memberList, index);
 
     System.out.println("회원을 삭제하였습니다.");
   }

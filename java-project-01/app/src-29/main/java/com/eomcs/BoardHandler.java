@@ -19,16 +19,6 @@ public class BoardHandler implements Handler {
   Scanner keyScan;
   ArrayList boardList = new ArrayList();
 
-  // 생성자
-  // => 인스턴스를 생성할 때 반드시 호출해야 하는 메서드
-  // => 메서드명은 클래스이름과 같아야 한다.
-  // => 리턴 타입은 지정하지 말아야 한다.
-  // => 인스턴스를 생성할 때 반드시 설정해야 하는 값은 파라미터로 받는다.
-  BoardHandler(String boardName, Scanner keyScan) {
-    this.boardName = boardName;
-    this.keyScan = keyScan;
-  }
-
   public void execute() {
     loop: while (true) {
       System.out.print(this.boardName + "/게시글 관리> ");

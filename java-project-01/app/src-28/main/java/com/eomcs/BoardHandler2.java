@@ -3,7 +3,7 @@ package com.eomcs;
 import java.util.Date;
 import java.util.Scanner;
 
-public class BoardHandler implements Handler {
+public class BoardHandler2 implements Handler {
 
   // 한 개의 게시글을 담을 복합 데이터의 변수를 설계
   static class Board {
@@ -14,32 +14,22 @@ public class BoardHandler implements Handler {
     Date createdDate;
   }
 
-  // 게시판을 구분하기 위해 게시판 이름을 저장할 인스턴스 변수를 준비한다.
-  String boardName;
-  Scanner keyScan;
-  ArrayList boardList = new ArrayList();
+  static Scanner keyScan;
 
-  // 생성자
-  // => 인스턴스를 생성할 때 반드시 호출해야 하는 메서드
-  // => 메서드명은 클래스이름과 같아야 한다.
-  // => 리턴 타입은 지정하지 말아야 한다.
-  // => 인스턴스를 생성할 때 반드시 설정해야 하는 값은 파라미터로 받는다.
-  BoardHandler(String boardName, Scanner keyScan) {
-    this.boardName = boardName;
-    this.keyScan = keyScan;
-  }
+  // BoardHandler에서 사용할 ArrayList의 인스턴스를 준비한다.
+  static ArrayList boardList = new ArrayList();
 
   public void execute() {
     loop: while (true) {
-      System.out.print(this.boardName + "/게시글 관리> ");
+      System.out.print("게시글2 관리> ");
       String command = keyScan.nextLine();
 
       switch (command) {
-        case "list": this.list(); break;
-        case "add": this.add(); break;
-        case "update": this.update(); break;
-        case "delete": this.delete(); break;
-        case "view": this.view(); break;
+        case "list": list(); break;
+        case "add": add(); break;
+        case "update": update(); break;
+        case "delete": delete(); break;
+        case "view": view(); break;
         case "back":
           break loop;
         default:
@@ -49,10 +39,10 @@ public class BoardHandler implements Handler {
     }
   }
 
-  void list() {
+  static void list() {
     System.out.println("[게시글 목록]");
 
-    Object[] arr = this.boardList.toArray();
+    Object[] arr = boardList.toArray();
     int i = 0;
     for (Object item : arr) {
       Board board = (Board) item;
@@ -64,10 +54,10 @@ public class BoardHandler implements Handler {
     }
   }
 
-  void add() {
+  static void add() {
     System.out.println("[게시글 등록]");
 
-    if (this.boardList.size == ArrayList.MAX_LENGTH) {
+    if (boardList.size == ArrayList.MAX_LENGTH) {
       System.out.println("더이상 게시글을 추가할 수 없습니다.");
       return;
     }
@@ -76,13 +66,13 @@ public class BoardHandler implements Handler {
     Board board = new Board(); // Board 설계도에 따라 변수를 만들고 그 주소를 리턴한다.
 
     System.out.print("제목: ");
-    board.title = this.keyScan.nextLine();
+    board.title = keyScan.nextLine();
 
     System.out.print("내용: ");
-    board.content = this.keyScan.nextLine();
+    board.content = keyScan.nextLine();
 
     System.out.print("비밀번호: ");
-    board.password = this.keyScan.nextLine();
+    board.password = keyScan.nextLine();
 
     board.createdDate = new Date(); // 현재의 날짜와 시간을 생성하여 배열에 저장한다.
 
@@ -91,27 +81,27 @@ public class BoardHandler implements Handler {
     System.out.println("게시글을 등록했습니다.");
   }
 
-  void update() {
+  static void update() {
     System.out.println("[게시글 변경]");
 
     System.out.print("번호? ");
-    int index = Integer.parseInt(this.keyScan.nextLine());
+    int index = Integer.parseInt(keyScan.nextLine());
 
     if (index < 0 || index >= boardList.size) {
       System.out.println("무효한 게시글 번호입니다.");
       return;
     }
 
-    Board board = (Board) this.boardList.retrieve(index);
+    Board board = (Board) boardList.retrieve(index);
 
     System.out.printf("제목(%s)? ", board.title);
-    String title = this.keyScan.nextLine();
+    String title = keyScan.nextLine();
 
     System.out.printf("내용(%s)? ", board.content);
-    String content = this.keyScan.nextLine();
+    String content = keyScan.nextLine();
 
     System.out.print("정말 변경하시겠습니까?(y/N) ");
-    if (!this.keyScan.nextLine().equals("y")) {
+    if (!keyScan.nextLine().equals("y")) {
       System.out.println("게시글 변경을 최소하였습니다.");
       return;
     } 
@@ -122,40 +112,40 @@ public class BoardHandler implements Handler {
     System.out.println("게시글을 변경하였습니다.");
   }
 
-  void delete() {
+  static void delete() {
     System.out.println("[게시글 삭제]");
 
     System.out.print("번호? ");
-    int index = Integer.parseInt(this.keyScan.nextLine());
+    int index = Integer.parseInt(keyScan.nextLine());
 
-    if (index < 0 || index >= this.boardList.size) {
+    if (index < 0 || index >= boardList.size) {
       System.out.println("무효한 게시글 번호입니다.");
       return;
     }
 
     System.out.print("정말 삭제하시겠습니까?(y/N) ");
-    if (!this.keyScan.nextLine().equals("y")) {
+    if (!keyScan.nextLine().equals("y")) {
       System.out.println("게시글 삭제를 최소하였습니다.");
       return;
     } 
 
-    this.boardList.remove(index);
+    boardList.remove(index);
 
     System.out.println("게시글을 삭제하였습니다.");
   }
 
-  void view() {
+  static void view() {
     System.out.println("[게시글 조회]");
 
     System.out.print("번호? ");
-    int index = Integer.parseInt(this.keyScan.nextLine());
+    int index = Integer.parseInt(keyScan.nextLine());
 
-    if (index < 0 || index >= this.boardList.size) {
+    if (index < 0 || index >= boardList.size) {
       System.out.println("무효한 게시글 번호입니다.");
       return;
     }
 
-    Board board = (Board) this.boardList.retrieve(index);
+    Board board = (Board) boardList.retrieve(index);
 
     board.viewCount++;
 

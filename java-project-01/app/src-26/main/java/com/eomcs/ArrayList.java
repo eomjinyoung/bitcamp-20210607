@@ -12,29 +12,28 @@ public class ArrayList {
   Object[] list = new Object[MAX_LENGTH];
   int size = 0;
 
-  // 인스턴스 변수(예: list, size)를 사용하는 메서드는 인스턴스 메서드를 전환한다.
-  // 인스턴스 메서드는 인스턴스 주소를 받는 this 이름의 레퍼런스를 내장하고 있다.
-  void append(Object obj) {
-    this.list[this.size++] = obj;
+  // 메서드가 작업할 때 인스턴스 변수를 사용할 수 있도록 파라미터로 인스턴스 주소를 전달한다.
+  static void append(ArrayList that, Object obj) {
+    that.list[that.size++] = obj;
   }
 
-  Object[] toArray() {
-    Object[] arr = new Object[this.size];
-    for (int i = 0; i < this.size; i++) {
-      arr[i] = this.list[i];
+  static Object[] toArray(ArrayList that) {
+    Object[] arr = new Object[that.size];
+    for (int i = 0; i < that.size; i++) {
+      arr[i] = that.list[i];
     }
     return arr;
   }
 
-  Object retrieve(int index) {
-    return this.list[index];
+  static Object retrieve(ArrayList that, int index) {
+    return that.list[index];
   }
 
-  void remove(int index) {
-    for (int i = index; i < this.size - 1; i++) {
-      this.list[i] = this.list[i + 1];
+  static void remove(ArrayList that, int index) {
+    for (int i = index; i < that.size - 1; i++) {
+      that.list[i] = that.list[i + 1];
     }
-    this.size--;
+    that.size--;
   }
 
 }

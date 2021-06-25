@@ -23,16 +23,6 @@ public class MemberHandler implements Handler {
   Scanner keyScan;
   ArrayList memberList = new ArrayList();
 
-  MemberHandler(Scanner keyScan) {
-    this.keyScan = keyScan;
-    this.memberGroupName = "일반";
-  }
-
-  MemberHandler(String memberGroupName, Scanner keyScan) {
-    this.memberGroupName = memberGroupName;
-    this.keyScan = keyScan;
-  }
-
   public void execute() {
     loop: while (true) {
       // 인스턴스 메서드에서 인스턴스 변수를 사용할 때 

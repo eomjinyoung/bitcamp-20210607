@@ -6,10 +6,6 @@ public class ComputeHandler implements Handler {
 
   Scanner keyScan;
 
-  ComputeHandler(Scanner keyScan) {
-    this.keyScan = keyScan;
-  }
-
   public void execute() {
     while (true) {
       System.out.print("계산식: (이전 메뉴: back) (예: 100 * 4) ");
